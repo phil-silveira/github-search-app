@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
-import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.dio.githubportifolio.R
 import br.edu.dio.githubportifolio.data.ReposRepository
@@ -19,8 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var usernameField: TextInputEditText
-    private lateinit var searchButton: AppCompatButton
+    private lateinit var searchField: TextInputEditText
     private lateinit var progressIndicator: ProgressBar
     private lateinit var searchResultListView: RecyclerView
 
@@ -36,25 +34,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        usernameField = findViewById(R.id.username_field)
-        searchButton = findViewById(R.id.search_button)
+        searchField = findViewById(R.id.search_field)
         progressIndicator = findViewById(R.id.circular_progress_indicator)
         searchResultListView = findViewById(R.id.search_result_listview)
     }
 
     private fun setupListeners() {
-        searchButton.setOnClickListener {
+        searchField.setOnEditorActionListener { _, _, _ ->
             val view = currentFocus
             if (view != null) {
                 val manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 manager.hideSoftInputFromWindow(view.windowToken, 0)
             }
 
-            val username: String = usernameField.text.toString().trim()
+            val username: String = searchField.text.toString().trim()
 
-            if (username.isEmpty()) return@setOnClickListener
+            if (username.isEmpty()) return@setOnEditorActionListener true
 
             searchRepositories(username)
+            return@setOnEditorActionListener true
         }
         progressIndicator.visibility = View.GONE
     }

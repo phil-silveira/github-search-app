@@ -31,3 +31,5 @@ interface GithubReposService {
     @GET("/users/{user}/repos")
     fun listReposByUsername(@Path("user") user: String): Call<List<Repository>>
 }
+
+// https://api.github.com/users/phil/repos
