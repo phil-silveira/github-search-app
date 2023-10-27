@@ -16,11 +16,3 @@ data class Repository(
 
     val owner: Owner
 )
-
-data class Owner(
-    @SerializedName("avatar_url")
-    val avatarUrl: String,
-
-    @SerializedName("login")
-    val username: String
-)
