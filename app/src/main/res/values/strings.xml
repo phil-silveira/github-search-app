@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Github Portifolio</string>
-    <string name="title">Github</string>
+    <string name="app_name">Github Portfolio</string>
+    <string name="title">Github - My Repos</string>
     <string name="username_field_hint">username (ex: monty-python)</string>
-    <string name="search_button_text">Buscar</string>
     <string name="content_description_ic_share">share icon</string>
     <string name="content_description_ic_start">star icon</string>
 </resources>

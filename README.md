@@ -1,4 +1,4 @@
-# Github - Search User Repos
+# Github - My Repos
 
 ## Description
 
